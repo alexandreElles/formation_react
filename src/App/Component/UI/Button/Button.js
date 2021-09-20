@@ -2,7 +2,8 @@ import React from "react";
 import "./Button.css";
 
 export function Button(props){
-    return <button className="Button"> Cliquez moi !!!</button>
+    console.log(props.text)
+    return <button className="Button">{props.children?props.children:'BENJAMIIIIN'}</button>
 }
 
 //export default Button;

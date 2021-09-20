@@ -7,7 +7,11 @@ function App() {
     <div className="App">
         Hello world
         <hr/>
-        <Button></Button>
+        <Button text="Je ne veux rien">
+            <div>fhjek</div>
+            <div>djslfjk</div>
+        </Button>
+        <Button text="COucou"/>
         <Button></Button>
     </div>
   );
