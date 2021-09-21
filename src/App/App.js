@@ -5,6 +5,7 @@ import MemeViewer from "./Component/UI/MemeViewer/MemeViewer";
 import {RESSOURCES, REST_ADR} from "./Config/config";
 import FlexLayout from "./Component/Layout/FlexLayout/FlexLayout";
 import MemeEditor from "./Component/UI/MemeEditor/MemeEditor";
+import store from "./Store/Store";
 
 const initialState = {
     memes: [],

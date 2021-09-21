@@ -10,7 +10,7 @@ function MemeEditor(props) {
     return (
         <div className={styles.MemeEditor} data-testid="MemeEditor">
             <form>
-                <label htmlfor="Name">Meme label</label>
+                <label htmlFor="Name">Meme label</label>
                 <br/>
                 <input type="text" id="Name" value={props.meme.name} onChange={(evt)=>{props.onFormChange({...props.meme,name:evt.target.value})}}></input>
                 <hr/>
@@ -28,8 +28,8 @@ function MemeEditor(props) {
                 <h2>Texte</h2>
                 <input type="text" placeholder="Texte du meme" value={props.meme.text} onChange={(evt)=>{props.onFormChange({...props.meme,text:evt.target.value})}}/>
                 <h2>Position</h2>
-                <label htmlfor="x">x:</label><input type="number" className={styles.smallInput} value={props.meme.x} onChange={(evt)=>{props.onFormChange({...props.meme,x:Number(evt.target.value)})}}/>
-                <label htmlfor="y">y:</label><input type="number" className={styles.smallInput} value={props.meme.y} onChange={(evt)=>{props.onFormChange({...props.meme,y:Number(evt.target.value)})}}/>
+                <label htmlFor="x">x:</label><input type="number" className={styles.smallInput} value={props.meme.x} onChange={(evt)=>{props.onFormChange({...props.meme,x:Number(evt.target.value)})}}/>
+                <label htmlFor="y">y:</label><input type="number" className={styles.smallInput} value={props.meme.y} onChange={(evt)=>{props.onFormChange({...props.meme,y:Number(evt.target.value)})}}/>
                 <h2>Options</h2>
                 <label htmlFor="Fill">Fill</label><br/>
                 <input type="color" id="Fill" className={styles.smallInput} value={props.meme.fill} onChange={(evt)=>{props.onFormChange({...props.meme,fill:evt.target.value})}}/>
