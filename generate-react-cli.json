@@ -10,6 +10,52 @@
       "withTest": true,
       "withStory": false,
       "withLazy": false
+    },
+    "class": {
+      "path": "src/App/Component",
+      "withStyle": true,
+      "withTest": true,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates": {
+        "component": "templatesGRC/class/TemplateName.js",
+        "test": "templatesGRC/class/TemplateName.test.js",
+        "style": "templatesGRC/class/TemplateName.module.css"
+      }
+    },
+    "function": {
+      "path": "src/App/Component",
+      "withStyle": true,
+      "withTest": true,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates": {
+        "component": "templatesGRC/HookFunction/TemplateName.js",
+        "test": "templatesGRC/HookFunction/TemplateName.test.js",
+        "style": "templatesGRC/HookFunction/TemplateName.module.css"
+      }
+    },
+    "ui": {
+      "path": "src/App/Component/UI",
+      "withStyle": true,
+      "withTest": true,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates": {
+        "component": "templatesGRC/HookFunction/TemplateName.js",
+        "test": "templatesGRC/HookFunction/TemplateName.test.js",
+        "style": "templatesGRC/HookFunction/TemplateName.module.css"
+      }
+    },
+    "ui": {
+      "path": "src/App/store",
+      "withStyle": true,
+      "withTest": true,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates": {
+        "component": "templatesGRC/reducer/TemplateName.js"
+      }
     }
   }
 }
