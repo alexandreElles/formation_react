@@ -1,0 +1,10 @@
+.FlexLayout{
+    display: flex;
+    height: 85vh;
+    width: 100%;
+}
+
+.FlexLayout{
+    flex-grow: 1;
+
+}

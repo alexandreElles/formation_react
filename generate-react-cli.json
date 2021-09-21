@@ -24,7 +24,7 @@
       }
     },
     "function": {
-      "path": "src/App/Component",
+      "path": "src/App/Component/UI",
       "withStyle": true,
       "withTest": true,
       "withStory": false,

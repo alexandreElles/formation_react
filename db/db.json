@@ -13,13 +13,12 @@
         "width":400,
         "height":400
       },
-      "style":{
-        "fill":"black",
-        "textDecoration":"underline",
-        "fontStyle":"italic",
-        "fontSize":15,
-        "fontWeight":300
-      }
+      "fill":"black",
+      "textDecoration":"underline",
+      "fontStyle":"italic",
+      "fontSize":15,
+      "color": "red",
+      "fontWeight":300
     },
     {
       "id": 2,
@@ -31,13 +30,12 @@
       },
       "imageId": 2,
       "name": "test",
-      "style": {
-        "fill": "black",
-        "textDecoration": "underline",
-        "fontStyle": "italic",
-        "fontSize": 15,
-        "fontWeight": 300
-      },
+      "fill": "black",
+      "textDecoration": "underline",
+      "fontStyle": "italic",
+      "fontSize": 15,
+      "fontWeight": 300,
+      "color": "blue",
       "text": "coucouc",
       "x": 200,
       "y": 150
