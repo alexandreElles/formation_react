@@ -47,7 +47,7 @@
         "style": "templatesGRC/HookFunction/TemplateName.module.css"
       }
     },
-    "ui": {
+    "reducer": {
       "path": "src/App/store",
       "withStyle": true,
       "withTest": true,
