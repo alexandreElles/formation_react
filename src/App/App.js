@@ -2,87 +2,12 @@ import React from 'react';
 import styles from './App.module.css';
 import ThumbnailLayout from "./Component/Layout/ThumbnailLayout/ThumbnailLayout";
 import MemeViewer from "./Component/UI/MemeViewer/MemeViewer";
+import {RESSOURCES, REST_ADR} from "./Config/config";
 
 const initialState = {
-    memes:[
-        {
-            id:1,
-            text:'Test test test',
-            name:'test',
-            x:45,
-            y:45,
-            imageId:1,
-            image:{
-                id:0,
-                url:'/Meme/spiderman.jpg',
-                width:400,
-                height:400
-            },
-            style:{
-                fill:'black',
-                textDecoration:'underline',
-                fontStyle:'italic',
-                fontSize:15,
-                fontWeight:300
-            }
-        },
-        {
-            id:2,
-            text:'coucouc',
-            name:'test',
-            x:200,
-            y:150,
-            imageId:2,
-            image:{
-                id:0,
-                url:'/Meme/fire.png',
-                width:400,
-                height:400
-            },
-            style:{
-                fill:'black',
-                textDecoration:'underline',
-                fontStyle:'italic',
-                fontSize:15,
-                fontWeight:300
-            }
-        }
-    ],
-    current: {
-        id:1,
-        text:'coucouc',
-        name:'test',
-        x:0,
-        y:0,
-        imageId:1,
-        style:{
-            fill:'black',
-            textDecoration:'underline',
-            fontStyle:'italic',
-            fontSize:15,
-            fontWeight:300
-        }
-    },
-    images: [
-        {
-            id:1,
-            url:'/Meme/spiderman.jpg',
-            width:400,
-            height:400
-        },
-        {
-            id:2,
-            url:'/Meme/fire.png',
-            width:400,
-            height:400
-        },
-        {
-            id:3,
-            url:'/Meme/drake.png',
-            width:400,
-            height:400
-        }
-    ]
+    memes: [],
+    current: {},
+    images:[]
 };
 
 class App extends React.Component{
@@ -91,8 +16,28 @@ class App extends React.Component{
         this.state = initialState;
     }
 
+    componentDidMount() {
+       const promise1 = fetch(`${REST_ADR}${RESSOURCES.memes}`)
+            .then(f=>f.json());
+        /*.then(arr=>{
+            this.setState(memes:arr)
+            return arr;
+        })*/
+        const promise2 = fetch(`${REST_ADR}${RESSOURCES.images}`)
+            .then(f=>f.json());
+        /*.then(arr=>{
+            this.setState(images:arr)
+            return arr;
+        })*/
+        Promise.all([promise1,promise2]).then((fs)=>{
+            console.log(fs);
+            this.setState({memes: fs[0], images: fs[1]});
+        })
+    }
+
     render() {
         return (
+            <>
             <div className={styles.App}>
                 <ThumbnailLayout>
                     {
@@ -105,6 +50,8 @@ class App extends React.Component{
                     }
                 </ThumbnailLayout>
             </div>
+            <div>{JSON.stringify(this.state)}</div>
+            </>
         );
     }
 }
