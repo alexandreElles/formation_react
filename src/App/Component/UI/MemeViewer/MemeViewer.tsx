@@ -8,7 +8,9 @@ interface MemeViewerProps{
         text: string,
         x: number,
         y: number,
+        imageId: number
         image:{
+            id:number,
             url: string,
             width: number,
             height: number

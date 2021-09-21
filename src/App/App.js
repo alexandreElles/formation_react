@@ -1,14 +1,17 @@
 import React from 'react';
 import styles from './App.module.css';
+import ThumbnailLayout from "./Component/Layout/ThumbnailLayout/ThumbnailLayout";
+import MemeViewer from "./Component/UI/MemeViewer/MemeViewer";
 
 const initialState = {
     memes:[
         {
             id:1,
-            text:'coucouc',
+            text:'Test test test',
             name:'test',
-            x:0,
-            y:0,
+            x:45,
+            y:45,
+            imageId:1,
             image:{
                 id:0,
                 url:'/Meme/spiderman.jpg',
@@ -27,11 +30,12 @@ const initialState = {
             id:2,
             text:'coucouc',
             name:'test',
-            x:0,
-            y:0,
+            x:200,
+            y:150,
+            imageId:2,
             image:{
                 id:0,
-                url:'/Meme/spiderman.jpg',
+                url:'/Meme/fire.png',
                 width:400,
                 height:400
             },
@@ -68,13 +72,13 @@ const initialState = {
         },
         {
             id:2,
-            url:'/Meme/fire.jpg',
+            url:'/Meme/fire.png',
             width:400,
             height:400
         },
         {
             id:3,
-            url:'/Meme/drake.jpg',
+            url:'/Meme/drake.png',
             width:400,
             height:400
         }
@@ -90,7 +94,16 @@ class App extends React.Component{
     render() {
         return (
             <div className={styles.App}>
-
+                <ThumbnailLayout>
+                    {
+                        this.state.memes.map((e,i) => {
+                        return <MemeViewer key={`meme-${i}`} meme={{
+                                ...e,
+                                image:this.state.images.find(ef=>ef.id===e.imageId)
+                            }} />
+                        })
+                    }
+                </ThumbnailLayout>
             </div>
         );
     }
