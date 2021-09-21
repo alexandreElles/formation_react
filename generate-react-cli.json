@@ -47,6 +47,18 @@
         "style": "templatesGRC/HookFunction/TemplateName.module.css"
       }
     },
+    "layout": {
+      "path": "src/App/Component/Layout",
+      "withStyle": true,
+      "withTest": true,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates": {
+        "component": "templatesGRC/HookFunction/TemplateName.js",
+        "test": "templatesGRC/HookFunction/TemplateName.test.js",
+        "style": "templatesGRC/HookFunction/TemplateName.module.css"
+      }
+    },
     "reducer": {
       "path": "src/App/store",
       "withStyle": true,

@@ -20,7 +20,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cmp-layout": "npx generate-react-cli c --type=layout",
+    "cmp-class": "npx generate-react-cli c --type=class",
+    "cmp-ui": "npx generate-react-cli c --type=ui",
+    "cmp-function": "npx generate-react-cli c --type=function"
   },
   "eslintConfig": {
     "extends": [
