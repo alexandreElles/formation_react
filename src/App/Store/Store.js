@@ -1,7 +1,7 @@
-import {createStore} from "redux";
+import {combineReducers, createStore} from "redux";
 import {RESSOURCES, REST_ADR} from "../Config/config";
 
-const memeInitialState = {
+export const memeInitialState = {
     memes:[],
     images:[]
 }
@@ -43,7 +43,57 @@ function memeReducer(state=memeInitialState, action){
     }
 }
 
-const store = createStore(memeReducer);
+export const currentInitialState = {
+    text: '',
+    name: '',
+    x: 0,
+    y: 0,
+    imageId: -1,
+    fill: '#000',
+    color: '#000',
+    textDecoration: 'underline',
+    fontStyle: 'italic',
+    fontSize: 10,
+    fontWeight: 100
+}
+
+export const CURRENT_ACTION = Object.freeze({
+    UPDT_CURRENT:'UPDT_CURRENT',
+    SAVE_CURRENT:'SAVE_CURRENT',
+    CLEAR_CURRENT:'CLEAR_CURRENT'
+
+})
+
+const currentReducer = (state=currentInitialState, action) => {
+    console.log(action.type);
+    switch (action.type){
+        case CURRENT_ACTION.CLEAR_CURRENT:
+            return {currentInitialState};
+        case CURRENT_ACTION.UPDT_CURRENT:
+            return {...state,...action.value};
+        case CURRENT_ACTION.SAVE_CURRENT:
+            const p1 = fetch(`${REST_ADR}${RESSOURCES.memes}${state.id?'/'+state.id:''}`,
+                { headers:{"Content-type":"Application/json"},
+                    method:`${state.id?'PUT':'POST'}`
+                }).then(
+                    f=>{
+                        store.dispatch({type:CURRENT_ACTION.CLEAR_CURRENT})
+                    }, f=>{
+
+                });
+            return state;
+        default:
+            return state;
+    }
+}
+
+window.__REDUX_DEVTOOLS_EXTENSION = undefined;
+const store = createStore(
+    combineReducers({lists:memeReducer, current: currentReducer}),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+
+);
 store.subscribe(()=>{
     console.log(store.getState());
 });

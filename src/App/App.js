@@ -5,26 +5,11 @@ import MemeViewer from "./Component/UI/MemeViewer/MemeViewer";
 import {RESSOURCES, REST_ADR} from "./Config/config";
 import FlexLayout from "./Component/Layout/FlexLayout/FlexLayout";
 import MemeEditor from "./Component/UI/MemeEditor/MemeEditor";
-import store from "./Store/Store";
+import store, {currentInitialState, memeInitialState} from "./Store/Store";
 
 const initialState = {
-    memes: [],
-    current: {
-        id:1,
-        text:'coucouc',
-        name:'test',
-        x:78,
-        y:78,
-        imageId:2,
-        fill:'black',
-        color:'blue',
-        textDecoration:'underline',
-        fontStyle:'italic',
-        fontSize:15,
-        fontWeight:300
-
-    },
-    images:[]
+    current:currentInitialState,
+    images: memeInitialState.images
 };
 
 class App extends React.Component{
@@ -34,22 +19,10 @@ class App extends React.Component{
     }
 
     componentDidMount() {
-       const promise1 = fetch(`${REST_ADR}${RESSOURCES.memes}`)
-            .then(f=>f.json());
-        /*.then(arr=>{
-            this.setState(memes:arr)
-            return arr;
-        })*/
-        const promise2 = fetch(`${REST_ADR}${RESSOURCES.images}`)
-            .then(f=>f.json());
-        /*.then(arr=>{
-            this.setState(images:arr)
-            return arr;
-        })*/
-        Promise.all([promise1,promise2]).then((fs)=>{
-            console.log(fs);
-            this.setState({memes: fs[0], images: fs[1]});
-        })
+       this.setState({current: store.getState().current, images:store.getState().lists.images});
+       store.subscribe(()=>{
+           this.setState({current: store.getState().current, images:store.getState().lists.images});
+       })
     }
 
     render() {
