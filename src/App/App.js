@@ -6,6 +6,7 @@ import {RESSOURCES, REST_ADR} from "./Config/config";
 import FlexLayout from "./Component/Layout/FlexLayout/FlexLayout";
 import MemeEditor from "./Component/UI/MemeEditor/MemeEditor";
 import store, {currentInitialState, memeInitialState} from "./Store/Store";
+import Navbar from "./Component/UI/Navbar/Navbar";
 
 const initialState = {
     current:currentInitialState,
@@ -29,6 +30,7 @@ class App extends React.Component{
         return (
             <>
             <div className={styles.App}>
+                <Navbar></Navbar>
                 <FlexLayout>
                     <MemeViewer meme={{...this.state.current,image:this.state.images.find(e=>e.id===this.state.current.imageId)}}></MemeViewer>
                     <MemeEditor meme={this.state.current} images={this.state.images} onFormChange={(currentInForm) => {
