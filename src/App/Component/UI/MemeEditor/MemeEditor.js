@@ -21,7 +21,10 @@ function MemeEditor(props) {
     }, [current])
     return (
         <div className={styles.MemeEditor} data-testid="MemeEditor">
-            <form>
+            <form onSubmit={(evt)=>{
+                evt.preventDefault();
+                store.dispatch({type:CURRENT_ACTION.SAVE_CURRENT})
+            }}>
                 <label htmlFor="Name">Meme label</label>
                 <br/>
                 <input type="text" id="Name" value={current.name} onChange={(evt)=>{setCurrent({...current,name:evt.target.value})}}></input>
@@ -62,9 +65,7 @@ function MemeEditor(props) {
 }
 
 MemeEditor.propTypes = {
-    meme:PropTypes.object.isRequired,
-    images:PropTypes.array.isRequired,
-    onFormChange:PropTypes.func.isRequired
+    meme:PropTypes.object.isRequired
 };
 
 MemeEditor.defaultProps = {
