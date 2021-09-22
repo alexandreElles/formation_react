@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styles from './Navbar.module.css';
+import {Link} from "react-router-dom";
 
 const navbarInitialState ={}
 
@@ -21,15 +22,18 @@ function Navbar(props) {
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul className="nav navbar-nav">
                         <li className="active">
-                            <a href="#">
+                            <Link to="/">
                                 Home <span className="sr-only">(current)</span>
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="#">Thumbnail</a>
+                            <Link  to="/thumbnail">Thumbnail</Link >
                         </li>
                         <li>
-                            <a href="#">New meme</a>
+                            <Link  to="/editor">New meme</Link >
+                        </li>
+                        <li style={{'margin-left': '40px',color:'red'}}>
+                            <Link  to="/editor">Chemin inexistant</Link >
                         </li>
                     </ul>
                 </div>

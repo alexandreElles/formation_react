@@ -11,6 +11,7 @@ export const MEME_ACTION = Object.freeze({
     ADD_MEME:'ADD_MEME',
     ADD_IMAGES:'ADD_IMAGES',
     ADD_IMAGE:'ADD_IMAGE',
+    SELECT_CURRENT:'SELECT_CURRRENT'
 
 })
 const  MEME_ACTION_PRIVATE = Object.freeze({
@@ -21,6 +22,9 @@ const  MEME_ACTION_PRIVATE = Object.freeze({
 function memeReducer(state=memeInitialState, action){
     console.log(action.type);
     switch (action.type){
+        case MEME_ACTION.SELECT_CURRENT:
+            store.dispatch({type: CURRENT_ACTION.UPDT_CURRENT, value: state.memes.find(e=>e.id===action.value)})
+            return state
         case MEME_ACTION.ADD_MEMES:
             return {...state, memes:action.values};
         case MEME_ACTION.ADD_MEME:
@@ -74,10 +78,11 @@ const currentReducer = (state=currentInitialState, action) => {
         case CURRENT_ACTION.SAVE_CURRENT:
             const p1 = fetch(`${REST_ADR}${RESSOURCES.memes}${state.id?'/'+state.id:''}`,
                 { headers:{"Content-type":"Application/json"},
-                    method:`${state.id?'PUT':'POST'}`
+                    method:`${state.id?'PUT':'POST'}`,
+                    body: JSON.stringify(state)
                 }).then(
                     f=>{
-                        store.dispatch({type:CURRENT_ACTION.CLEAR_CURRENT})
+                        store.dispatch({type: MEME_ACTION_PRIVATE.INIT});
                     }, f=>{
 
                 });
